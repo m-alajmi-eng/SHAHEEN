@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<sdf version="1.9">
+  <model name="x500_x">
+    <include merge="true">
+      <uri>model://x500</uri>
+    </include>
+    <include merge="true">
+      <uri>model://lidar_2d_v2_3</uri>
+      <pose>0.12 0 0.26 0 0 0</pose>
+    </include>
+    <joint name="link_AttachJoint" type="fixed">
+      <parent>base_link</parent>
+      <child>link</child>
+    </joint>
+    <include merge="true">
+      <uri>model://OakD-Lite_3</uri>
+      <pose>0.12 0.03 0.242 0 0 0</pose>
+    </include>
+    <joint name="camera_link_AttachJoint" type="fixed">
+      <parent>base_link</parent>
+      <child>camera_link</child>
+    </joint>
+  </model>
+</sdf>

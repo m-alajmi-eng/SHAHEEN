@@ -1,0 +1,214 @@
+<?xml version="1.0" ?>
+<!--
+  ============================================================
+  external_world.sdf — Session 04
+  ============================================================
+  A PX4-compatible world for testing imported external mesh models.
+
+  IMPORTANT: Like all PX4 worlds, this file has NO explicit
+  <plugin> tags. Plugins are loaded from server.config via
+  GZ_SIM_SERVER_CONFIG_PATH.
+
+  One-time setup — copy to PX4 worlds directory:
+    cp ~/Videos/Session_4/worlds/external_world.sdf \
+       ~/PX4-Autopilot/Tools/simulation/gz/worlds/external_world.sdf
+
+  Run with:
+    Terminal 1:
+      export GZ_SIM_RESOURCE_PATH=~/PX4-Autopilot/Tools/simulation/gz/models
+      export GZ_SIM_SERVER_CONFIG_PATH=~/.simulation-gazebo/server.config
+      export GZ_SIM_SYSTEM_PLUGIN_PATH=~/PX4-Autopilot/build/px4_sitl_default/src/modules/simulation/gz_plugins
+      export GZ_MESH_FORCE_ASSIMP=1
+      gz sim -r ~/PX4-Autopilot/Tools/simulation/gz/worlds/external_world.sdf
+
+    Terminal 2 (after Gazebo is running):
+      cd ~/PX4-Autopilot
+      PX4_GZ_STANDALONE=1 PX4_GZ_WORLD=external_world make px4_sitl gz_x500
+  ============================================================
+-->
+<sdf version="1.9">
+  <world name="aaa">
+
+    <!-- Physics — required rate for PX4 sensor integration -->
+    <physics type="ode">
+      <max_step_size>0.004</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>250</real_time_update_rate>
+    </physics>
+
+    <!-- Required by PX4 sensor plugins via server.config -->
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type="adiabatic"/>
+
+    <!-- GPS home position — required for NavSat/GPS sensor -->
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <world_frame_orientation>ENU</world_frame_orientation>
+      <latitude_deg>47.397971057728974</latitude_deg>
+      <longitude_deg>8.546163739800146</longitude_deg>
+      <elevation>0</elevation>
+    </spherical_coordinates>
+    
+    
+    
+
+    <!-- Sun -->
+    <light name="sunUTC" type="directional">
+      <pose>0 0 500 0 0 0</pose>
+      <cast_shadows>true</cast_shadows>
+      <intensity>1</intensity>
+      <direction>0.001 0.625 -0.78</direction>
+      <diffuse>0.904 0.904 0.904 1</diffuse>
+      <specular>0.271 0.271 0.271 1</specular>
+      <attenuation>
+        <range>2000</range>
+        <linear>0</linear>
+        <constant>1</constant>
+        <quadratic>0</quadratic>
+      </attenuation>
+    </light>
+
+    <!-- Ground plane -->
+    <model name="desert_ground">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size> </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size> </plane>
+          </geometry>
+          <material>
+            <ambient>0.55 0.45 0.30 1</ambient>
+            <diffuse>0.55 0.45 0.30 1</diffuse>
+            <specular>0.05 0.05 0.05 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+   <include>
+      <uri>model://low_poly_airport</uri>
+      <name>low_poly_airport</name>
+      <pose>3 0 -3.85 1.57 0 1.66</pose>
+    </include>
+    
+    <include>
+      <uri>model://saudi_arabia_a380</uri>
+      <name>saudi_arabia_a380</name>
+      <pose>-37.32 3.58 1 1.57 0 0.66</pose>
+    </include>
+    
+    <include>
+      <uri>model://saudi_arabia_a380_2</uri>
+      <name>saudi_arabia_a380_2</name>
+      <pose>0.25 5.92 1.02 1.57 0 -2.12</pose>
+    </include>
+   
+    <include>
+      <uri>model://boeing_777-300er_saudi_arabian_airlines_saudia</uri>
+      <name>boeing_777-300er_saudi_arabian_airlines_saudia</name>
+      <pose>-25.21 5.23 0.30 1.57 0 -1.20</pose>
+    </include>
+    
+    <include>
+      <uri>traffic_cone_game_ready</uri>
+      <name>traffic_cone_game_ready</name>
+      <pose>-35.56 -5.19 0.09 1.54 0 0.66</pose>
+    </include>
+    
+    <include>
+     <uri>bird_project</uri>
+      <name>bird_project</name>
+      <pose>-13.51 -29.69 3.5 1.57 0 0.66</pose>
+    </include> 
+    
+    <include>
+           <uri>model://bird_project2</uri>
+           <name>bird_project2</name>               
+           <pose>-15.51 -29.69 3.5 1.57 0 0.66</pose>
+         </include>
+         
+         <include>
+           <uri>model://bird_project3</uri>
+           <name>bird_project3</name>               
+           <pose>-17.51 -29.69 3.5 1.57 0 0.66</pose>
+         </include>
+         
+         <include>
+           <uri>model://helipad2</uri>
+           <name>helipad2</name>               
+           <pose>0.03 -0.06 0.11 1.58 0 0.12</pose>
+         </include>
+         
+         <include>
+           <uri>model://airport_baggage_equipment_cart_lowpoly</uri>
+           <name>airport_baggage_equipment_cart_lowpoly</name>               
+           <pose>-1.51 2.79 0.29 1.57 0 -2.12</pose>
+         </include>
+         
+         <include>
+           <uri>model://airport_baggage_equipment_cart_lowpoly2</uri>
+           <name>airport_baggage_equipment_cart_lowpoly2</name>               
+           <pose>-2.05 3.06 0.29 1.57 0 -2.12</pose>
+         </include>
+         
+         <include>
+           <uri>model://airport_baggage_truck</uri>
+           <name>airport_baggage_truck</name>               
+           <pose>-3.21 3.86 0.12 1.57 0 2.99</pose>
+         </include>
+         
+         <include>
+           <uri>model://mountains_No3</uri>
+           <name>mountains_No3</name>               
+           <pose>6.95 -56.53 0 1.56 -0.01 -1.44</pose>
+         </include>
+         
+         
+         
+    <!-- ======================================================
+         YOUR IMPORTED MODEL GOES HERE
+         ======================================================
+         Replace 'YourModelName' with the folder name you created
+         in the walkthrough. The folder must be in GZ_SIM_RESOURCE_PATH.
+<include>
+           <uri>model://airport_baggage_truck</uri>
+           <name>airport_baggage_truck</name>               
+           <pose>-3.21 3.86 0.12 1.57 0 2.99</pose>
+         </include>
+         
+         <include>
+           <uri>model://chain_link_fence_low_poly_version</uri>
+           <name>chain_link_fence_low_poly_version</name>               
+           <pose>-1.51 2.79 0.29 1.57 0 -2.12</pose>
+         </include>
+         
+         <include>
+           <uri>model://airport_baggage_equipment_cart_lowpoly2</uri>
+           <name>airport_baggage_equipment_cart_lowpoly2</name>               
+           <pose>-2.05 3.06 0.29 1.57 0 -2.12</pose>
+         </include>
+
+
+         <include>
+           <uri>model://airport_baggage_truck</uri>
+           <name>airport_baggage_truck</name>               
+           <pose>-17.51 -29.69 3.5 1.57 0 0.66</pose>
+         </include>
+
+         TIP: Place models at X=10 to X=30 so the drone (spawns at 0,0)
+         can see them immediately. Keep Z=0 — the model.sdf handles
+         vertical positioning via its own geometry and scale.
+    ====================================================== -->
+
+  </world>
+</sdf>
