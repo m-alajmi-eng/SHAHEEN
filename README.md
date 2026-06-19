@@ -14,7 +14,7 @@ SHAHEEN/
 ├── SHAHEEN_V2/          # Advanced simulation environment and models
 │   ├── models/          # Custom 3D assets (Drone, FOD, Wildlife)
 │   ├── worlds/          # Airport simulation  (SHAHEEN_World.sdf)
-│   └── scripts/         # Intelligent control logic (SHAHEEN_V2.py)
+│   └── Code/            # Intelligent control logic (SHAHEEN_V2.py)
 └── README.md            # Technical documentation
 
 ```
@@ -52,7 +52,7 @@ PX4_SIM_MODEL=gz_x500_x \
 Once the simulation environment is stable, open a new terminal, navigate to the `SHAHEEN_V2` folder, and execute the Python control script to begin the autonomous inspection:
 
 ```bash
-python3 scripts/ppp.py
+python3 code/SHAHEEN_V2.py
 
 ```
 
