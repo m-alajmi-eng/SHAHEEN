@@ -13,8 +13,8 @@ SHAHEEN/
 ├── SHAHEEN_V1/          # Initial project iteration and mission logic
 ├── SHAHEEN_V2/          # Advanced simulation environment and models
 │   ├── models/          # Custom 3D assets (Drone, FOD, Wildlife)
-│   ├── worlds/          # Airport simulation environment (aaa.sdf)
-│   └── scripts/         # Intelligent control logic (ppp.py)
+│   ├── worlds/          # Airport simulation  (SHAHEEN_World.sdf)
+│   └── scripts/         # Intelligent control logic (SHAHEEN_V2.py)
 └── README.md            # Technical documentation
 
 ```
