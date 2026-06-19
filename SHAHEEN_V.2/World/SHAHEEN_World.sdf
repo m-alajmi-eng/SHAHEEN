@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <sdf version="1.9">
-  <world name="SHAHEEN World">
+  <world name="SHAHEEN_World">
 
     <!-- Physics — required rate for PX4 sensor integration -->
     <physics type="ode">
