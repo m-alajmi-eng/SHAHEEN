@@ -10,6 +10,7 @@ The repository is organized to maintain a clear distinction between core flight 
 
 ## Project Structure.
 
+```text
 SHAHEEN/
 ├── SHAHEEN_V.1/              # Initial project iteration and mission logic
 │   ├── Presentation/         # Project documentation and presentation slides
