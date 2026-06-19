@@ -1,31 +1,5 @@
 <?xml version="1.0" ?>
-<!--
-  ============================================================
-  external_world.sdf — Session 04
-  ============================================================
-  A PX4-compatible world for testing imported external mesh models.
 
-  IMPORTANT: Like all PX4 worlds, this file has NO explicit
-  <plugin> tags. Plugins are loaded from server.config via
-  GZ_SIM_SERVER_CONFIG_PATH.
-
-  One-time setup — copy to PX4 worlds directory:
-    cp ~/Videos/Session_4/worlds/external_world.sdf \
-       ~/PX4-Autopilot/Tools/simulation/gz/worlds/external_world.sdf
-
-  Run with:
-    Terminal 1:
-      export GZ_SIM_RESOURCE_PATH=~/PX4-Autopilot/Tools/simulation/gz/models
-      export GZ_SIM_SERVER_CONFIG_PATH=~/.simulation-gazebo/server.config
-      export GZ_SIM_SYSTEM_PLUGIN_PATH=~/PX4-Autopilot/build/px4_sitl_default/src/modules/simulation/gz_plugins
-      export GZ_MESH_FORCE_ASSIMP=1
-      gz sim -r ~/PX4-Autopilot/Tools/simulation/gz/worlds/external_world.sdf
-
-    Terminal 2 (after Gazebo is running):
-      cd ~/PX4-Autopilot
-      PX4_GZ_STANDALONE=1 PX4_GZ_WORLD=external_world make px4_sitl gz_x500
-  ============================================================
--->
 <sdf version="1.9">
   <world name="aaa">
 
@@ -173,42 +147,6 @@
            <pose>6.95 -56.53 0 1.56 -0.01 -1.44</pose>
          </include>
          
-         
-         
-    <!-- ======================================================
-         YOUR IMPORTED MODEL GOES HERE
-         ======================================================
-         Replace 'YourModelName' with the folder name you created
-         in the walkthrough. The folder must be in GZ_SIM_RESOURCE_PATH.
-<include>
-           <uri>model://airport_baggage_truck</uri>
-           <name>airport_baggage_truck</name>               
-           <pose>-3.21 3.86 0.12 1.57 0 2.99</pose>
-         </include>
-         
-         <include>
-           <uri>model://chain_link_fence_low_poly_version</uri>
-           <name>chain_link_fence_low_poly_version</name>               
-           <pose>-1.51 2.79 0.29 1.57 0 -2.12</pose>
-         </include>
-         
-         <include>
-           <uri>model://airport_baggage_equipment_cart_lowpoly2</uri>
-           <name>airport_baggage_equipment_cart_lowpoly2</name>               
-           <pose>-2.05 3.06 0.29 1.57 0 -2.12</pose>
-         </include>
-
-
-         <include>
-           <uri>model://airport_baggage_truck</uri>
-           <name>airport_baggage_truck</name>               
-           <pose>-17.51 -29.69 3.5 1.57 0 0.66</pose>
-         </include>
-
-         TIP: Place models at X=10 to X=30 so the drone (spawns at 0,0)
-         can see them immediately. Keep Z=0 — the model.sdf handles
-         vertical positioning via its own geometry and scale.
-    ====================================================== -->
 
   </world>
 </sdf>
