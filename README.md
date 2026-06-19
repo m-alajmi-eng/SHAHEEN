@@ -8,16 +8,20 @@
 
 The repository is organized to maintain a clear distinction between core flight logic, simulation assets, and historical project documentation:
 
-```text
-SHAHEEN/
-├── SHAHEEN_V1/          # Initial project iteration and mission logic
-├── SHAHEEN_V2/          # Advanced simulation environment and models
-│   ├── models/          # Custom 3D assets (Drone, FOD, Wildlife)
-│   ├── worlds/          # Airport simulation  (SHAHEEN_World.sdf)
-│   └── Code/            # Intelligent control logic (SHAHEEN_V2.py)
-└── README.md            # Technical documentation
+## Project Structure.
 
-```
+SHAHEEN/
+├── SHAHEEN_V.1/              # Initial project iteration and mission logic
+│   ├── Presentation/         # Project documentation and presentation slides
+│   ├── Code/                 # Core mission scripts and primary logic
+│   └── Video & pic/          # Visual documentation and testing snapshots
+├── SHAHEEN_V.2/              # Advanced simulation and inspection environment
+│   ├── Models/               # Custom 3D assets (Drone, FOD, Wildlife)
+│   ├── World/                # Airport simulation environment (aaa.sdf)
+│   ├── Presentation/         # Updated technical presentation for GSTS 2026
+│   ├── Code/                 # Intelligent control logic (ppp.py)
+│   └── Video & pic/          # Simulation captures and inspection footage
+└── README.md                 # Project documentation and deployment guide
 
 ---
 
