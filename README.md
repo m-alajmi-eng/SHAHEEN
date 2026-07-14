@@ -1,30 +1,33 @@
 # SHAHEEN: Autonomous Runway Sentinel System
 
-**SHAHEEN** is an advanced autonomous drone-based solution engineered for the automated inspection of airport runways. Designed to enhance aviation safety at **King Khalid International Airport (KKIA)**, the system utilizes intelligent flight logic to detect Foreign Object Debris (FOD) and manage biological threats such as bird flocks in real-time.
+**SHAHEEN** is an advanced autonomous drone-based solution engineered for the automated inspection of airport runways. Designed to enhance aviation safety at **King Khalid International Airport (KKIA)**, the system uses intelligent flight logic to detect Foreign Object Debris (FOD) and manage biological threats such as bird flocks in real time.
+
+The project is built on the PX4 + Gazebo + MAVSDK stack and follows the engineering methodology of the Unmanned Systems Bootcamp reference project (`PX4-Sim-Starter`).
 
 ---
 
 ## Project Structure
 
-The repository is organized to maintain a clear distinction between core flight logic, simulation assets, and historical project documentation:
-
-## Project Structure.
+The repository is organized by **capability** rather than by version. The current
+system lives at the top level; the initial iteration is archived under `legacy/`
+for provenance.
 
 ```text
 SHAHEEN/
-├── SHAHEEN_V.1/              # Initial project iteration and mission logic
-│   ├── Presentation/         # Project documentation and presentation slides
-│   ├── Code/                 # Core mission scripts and primary logic
-│   └── Video & pic/          # Visual documentation and testing snapshots
-├── SHAHEEN_V.2/              # Advanced simulation and inspection environment
-│   ├── Models/               # Custom 3D assets (Drone, FOD, Wildlife)
-│   ├── World/                # Airport simulation environment (aaa.sdf)
-│   ├── Presentation/         # Updated technical presentation for GSTS 2026
-│   ├── Code/                 # Intelligent control logic (ppp.py)
-│   └── Video & pic/          # Simulation captures and inspection footage
-└── README.md                 # Project documentation and deployment guide
-
+├── flight/                     # Canonical MAVSDK mission controller
+│   └── shaheen_mission.py
+├── simulation/                 # Gazebo simulation assets
+│   ├── worlds/                 # Airport world (SHAHEEN_World.sdf)
+│   └── models/                 # Custom 3D models (drone, sensors, FOD, wildlife, scenery)
+├── docs/                       # Technical documentation and media
+│   ├── README.md               # Canonical technical guide
+│   ├── presentations/          # Project presentations (PDF)
+│   └── media/                  # Screenshots and captures
+├── legacy/                     # Archived earlier iteration (SHAHEEN V.1)
+│   └── SHAHEEN_V.1/
+└── README.md                   # This file
 ```
+
 ---
 
 ## Deployment Guide
@@ -33,51 +36,60 @@ Follow these steps to initialize the environment and execute the inspection miss
 
 ### Step 1: Environment Configuration
 
-Before launching the simulation, you must configure the resource path so the simulation engine can locate your custom airport assets. Run the following command within the project root:
+From the repository root, expose the custom models and world to the Gazebo
+resource path so the simulation engine can locate the airport assets:
 
 ```bash
-export GZ_SIM_RESOURCE_PATH=$PWD/SHAHEEN_V2/models:$PWD/SHAHEEN_V2/worlds
-
+export GZ_SIM_RESOURCE_PATH=$PWD/simulation/models:$PWD/simulation/worlds
 ```
 
 ### Step 2: Launch the Simulation
 
-Navigate to your `PX4-Autopilot` directory to initialize the flight stack, load the custom KKIA airport world, and position the drone. Execute the following command:
+Navigate to your `PX4-Autopilot` directory to initialize the flight stack, load
+the custom KKIA airport world, and spawn the drone:
 
 ```bash
 PX4_SYS_AUTOSTART=4001 \
 PX4_GZ_MODEL_POSE="0,-0.06,0.20,0.01,0,0.13" \
-PX4_GZ_WORLD=aaa \
+PX4_GZ_WORLD=SHAHEEN_World \
 PX4_SIM_MODEL=gz_x500_x \
 ./build/px4_sitl_default/bin/px4
-
 ```
 
-### Step 3: Execute Mission
+### Step 3: Execute the Mission
 
-Once the simulation environment is stable, open a new terminal, navigate to the `SHAHEEN_V2` folder, and execute the Python control script to begin the autonomous inspection:
+Once the simulation is stable, open a new terminal, return to the repository
+root, and run the Python control script to begin the autonomous inspection:
 
 ```bash
-python3 code/SHAHEEN_V2.py
-
+python3 flight/shaheen_mission.py
 ```
+
+See [`docs/README.md`](docs/README.md) for the full technical guide,
+dependencies, and troubleshooting.
+
+> `flight/shaheen_mission.py` is the standalone MAVSDK mission. The full
+> **Phase 3 ROS 2 pipeline** (YOLOv8n perception + mission supervisor +
+> Gazebo/PX4/MAVSDK) lives in [`ros2_ws/`](ros2_ws/README.md).
 
 ---
 
 ## Technical Highlights
 
-* **Intelligent Flight Logic:** Uses `MAVSDK` and `PX4` for precise mission execution, including a 30-waypoint flight plan.
-* **Asynchronous Processing:** Utilizes Python’s `asyncio` to manage telemetry and mission tasks concurrently.
-* **Safety Protocols:** Implements automated **Return to Launch (RTL)** logic triggered by low battery or critical system faults.
-* **Real-time Monitoring:** Supports integration with **QGroundControl** for live telemetry and flight path visualization.
+* **Intelligent Flight Logic:** Uses `MAVSDK` and `PX4` for precise mission execution across a 10-waypoint runway scan.
+* **Asynchronous Processing:** Uses Python's `asyncio` to manage telemetry and mission tasks concurrently.
+* **Safety Protocols:** Automated **Return to Launch (RTL)** triggered by low battery or tower abort orders.
+* **Real-time Monitoring:** Supports integration with **QGroundControl** for live telemetry and flight-path visualization.
 
 ---
 
 ## Roadmap & Future Development
 
-* **Computer Vision:** Integration of **YOLOv8** for high-accuracy object detection.
-* **Swarm Intelligence:** Deployment of multi-drone coordinated coverage.
-* **ROS2 Transition:** Moving to **ROS2** to support distributed processing and enhanced scalability.
+| Phase | Technology | Status |
+| --- | --- | --- |
+| **Phase 1-2** | MAVSDK / PX4 / Gazebo | Runway inspection & FOD/bird simulation |
+| **Phase 3** | ROS 2 (Humble) + YOLOv8n | Camera-driven detection — implemented in [`ros2_ws/`](ros2_ws/README.md) |
+| **Future** | Swarm + Micro-XRCE-DDS | Multi-drone coordinated coverage |
 
 ---
 
@@ -86,4 +98,4 @@ python3 code/SHAHEEN_V2.py
 * **Developer:** Eng. Mohammed S. Alajmi
 * **Affiliation:** Tuwaiq Academy
 
-*This project follows open-source automation standards to ensure compatibility with future smart airport infrastructures.*
+*This project follows open-source automation standards to ensure compatibility with future smart-airport infrastructures.*
