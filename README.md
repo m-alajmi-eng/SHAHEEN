@@ -68,6 +68,10 @@ python3 flight/shaheen_mission.py
 See [`docs/README.md`](docs/README.md) for the full technical guide,
 dependencies, and troubleshooting.
 
+> `flight/shaheen_mission.py` is the standalone MAVSDK mission. The full
+> **Phase 3 ROS 2 pipeline** (YOLOv8n perception + mission supervisor +
+> Gazebo/PX4/MAVSDK) lives in [`ros2_ws/`](ros2_ws/README.md).
+
 ---
 
 ## Technical Highlights
@@ -81,10 +85,10 @@ dependencies, and troubleshooting.
 
 ## Roadmap & Future Development
 
-| Phase | Technology | Goal |
+| Phase | Technology | Status |
 | --- | --- | --- |
-| **Current** | MAVSDK / PX4 / Gazebo | Runway inspection & FOD/bird simulation |
-| **Phase 3** | ROS 2 (Humble) + YOLO | Real-time, camera-driven object detection |
+| **Phase 1-2** | MAVSDK / PX4 / Gazebo | Runway inspection & FOD/bird simulation |
+| **Phase 3** | ROS 2 (Humble) + YOLOv8n | Camera-driven detection — implemented in [`ros2_ws/`](ros2_ws/README.md) |
 | **Future** | Swarm + Micro-XRCE-DDS | Multi-drone coordinated coverage |
 
 ---

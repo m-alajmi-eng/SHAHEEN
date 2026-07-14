@@ -60,7 +60,8 @@ def generate_launch_description():
     static_tf = Node(
         package='tf2_ros', executable='static_transform_publisher',
         name='base_to_camera',
-        arguments=['0.12', '0.03', '0.242', '0', '0', '0', 'base_link', 'camera_link'],
+        arguments=['--x', '0.12', '--y', '0.03', '--z', '0.242',
+                   '--frame-id', 'base_link', '--child-frame-id', 'camera_link'],
         output='screen',
     )
 

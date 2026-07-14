@@ -96,10 +96,10 @@ python3 flight/shaheen_mission.py
 
 ## Roadmap
 
-| Phase | Technology | Goal |
+| Phase | Technology | Status |
 | --- | --- | --- |
-| **Current** | MAVSDK / PX4 / Gazebo | Runway inspection & FOD/bird simulation |
-| **Phase 3** | ROS 2 (Humble) + YOLO | Real-time, camera-driven object detection |
+| **Phase 1-2** | MAVSDK / PX4 / Gazebo | Runway inspection & FOD/bird simulation |
+| **Phase 3** | ROS 2 (Humble) + YOLOv8n | Implemented — see [`../ros2_ws/README.md`](../ros2_ws/README.md) |
 | **Future** | Swarm + Micro-XRCE-DDS | Multi-drone coordinated coverage |
 
 ---
