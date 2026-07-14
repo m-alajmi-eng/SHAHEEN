@@ -1,0 +1,8 @@
+# Parameters for the SHAHEEN YOLOv8n perception node (Day 5).
+# model_path is injected by the launch file (absolute path to the installed
+# models/best.pt), so it is intentionally not set here.
+yolo_detector:
+  ros__parameters:
+    camera_topic: /shaheen/camera/image
+    confidence_threshold: 0.5
+    detect_rate_hz: 5.0

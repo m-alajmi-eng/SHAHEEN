@@ -51,6 +51,7 @@
         <always_on>1</always_on>
         <update_rate>10</update_rate>
         <visualize>false</visualize>
+        <topic>/shaheen/camera/image</topic>
       </sensor>
       <sensor name="StereoOV7251" type="depth_camera">
         <gz_frame_id>camera_link</gz_frame_id>

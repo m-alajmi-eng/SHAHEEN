@@ -1,0 +1,3 @@
+# Python dependencies for the SHAHEEN perception node (install with pip).
+# ROS 2 packages (rclpy, cv_bridge, sensor_msgs, ros_gz_bridge) come from apt / rosdep.
+ultralytics>=8.0.0

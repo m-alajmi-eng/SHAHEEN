@@ -1,0 +1,4 @@
+# The pretrained YOLOv8n weights are downloaded once and stored locally.
+# They are not committed to the repository (binary; fetched per the README).
+*.pt
+*.onnx
