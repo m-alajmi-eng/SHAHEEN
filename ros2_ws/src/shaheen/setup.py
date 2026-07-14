@@ -14,6 +14,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         (os.path.join('share', package_name, 'launch'), glob('launch/*launch.py')),
         (os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
+        (os.path.join('share', package_name, 'rviz'), glob('rviz/*.rviz')),
         (os.path.join('share', package_name, 'models'), glob('models/*.pt')),
     ],
     install_requires=['setuptools'],
@@ -26,6 +27,8 @@ setup(
     entry_points={
         'console_scripts': [
             'yolo_detector = shaheen.yolo_detector:main',
+            'tower = shaheen.tower:main',
+            'mission_supervisor = shaheen.mission_supervisor:main',
         ],
     },
 )

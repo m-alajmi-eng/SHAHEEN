@@ -1,0 +1,12 @@
+# Parameters for the SHAHEEN mission supervisor and tower (Day 5).
+mission_supervisor:
+  ros__parameters:
+    connection_url: udpin://0.0.0.0:14540
+    cruise_altitude: 4.0
+    rtl_altitude: 4.0
+    low_battery_threshold: 0.20
+    detection_confidence_min: 0.5
+
+tower:
+  ros__parameters:
+    grant_clearance: true

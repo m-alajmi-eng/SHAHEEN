@@ -1,0 +1,12 @@
+# Goal - request a runway inspection at the given scan altitude (metres).
+float32 altitude
+---
+# Result - summary of the completed inspection.
+bool  completed
+int32 fod_count
+bool  bird_detected
+---
+# Feedback - progress while the inspection runs.
+int32  current_waypoint
+int32  total_waypoints
+string status
